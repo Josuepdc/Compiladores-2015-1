@@ -22,7 +22,7 @@ jogado fora.
 Abaixo estão trechos de código que executam o analisador em
 alguns casos de teste:
 
-java.io.FileReader f = new java.io.FileReader("factorial.java");
+java.io.FileReader f = new java.io.FileReader("factorial.java");
 minijava.Scanner scan = new minijava.Scanner(f);
 for(minijava.Token tok: scan.tokens()) 
 	System.out.println(tok);

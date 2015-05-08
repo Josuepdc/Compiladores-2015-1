@@ -51,6 +51,9 @@ import java.io.IOException;
 
 %}
 
+//estado para comentario 
+%xstate COMMENT
+
 %%
 
 /*
@@ -130,20 +133,11 @@ new						{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
 // Identificadores e numerais
 [a-zA-Z]	   				{ return new Token(Token.ID, yytext(), yyline, yycolumn); }
 [a-zA-Z_][a-zA-Z0-9_]+		{ return new Token(Token.ID, yytext(), yyline, yycolumn); }
-[0-9]+	
-
-
-
-
-
-
-
-
-
+[0-9]+						{ return new Token(Token.NUM, yytext(), yyline, yycolumn); }
 
 
 // Regra para EOF
-<<EOF>>      { return new Token(Token.EOF, yyline, yycolumn); }
+<<EOF>>      { return new Token(Token.EOF,yyline, yycolumn); }
 
 // Erros léxicos 
 .            { throw new RuntimeException("erro léxico, linha: " + 
