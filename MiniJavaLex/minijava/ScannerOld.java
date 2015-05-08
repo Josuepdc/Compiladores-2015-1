@@ -20,7 +20,7 @@ import java.io.IOException;
  * on 4/30/13 2:14 PM from the specification file
  * <tt>minijava.jflex</tt>
  */
-public class Scanner {
+public class ScannerOld {
 
   /** This character denotes the end of file */
   public static final int YYEOF = -1;
@@ -315,7 +315,7 @@ public class Scanner {
 
   /* user code: */
 
-	public Scanner() { }
+	public ScannerOld() { }
 
 	public void input(String input) {
 	    // inicializa entrada pro analisador
@@ -341,7 +341,7 @@ public class Scanner {
    *
    * @param   in  the java.io.Reader to read input from.
    */
-  public Scanner(java.io.Reader in) {
+  public ScannerOld(java.io.Reader in) {
     this.zzReader = in;
   }
 
@@ -351,7 +351,7 @@ public class Scanner {
    *
    * @param   in  the java.io.Inputstream to read input from.
    */
-  public Scanner(java.io.InputStream in) {
+  public ScannerOld(java.io.InputStream in) {
     this(new java.io.InputStreamReader(in));
   }
 
