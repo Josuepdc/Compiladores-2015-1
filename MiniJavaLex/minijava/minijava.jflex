@@ -83,24 +83,24 @@ import java.io.IOException;
 
 /* Palavras Reservadas */
 boolean      				{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
-class      					{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
-extends      				{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
-public      				{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
-static      				{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
-void      					{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
-main      					{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
-String      				{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
-return      				{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
-int      					{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
-if      					{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
-else						{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
-while						{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
-System.out.println			{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
-length						{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
-true      					{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
-false						{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
-this						{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
-new							{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
+class      					{ return new Token(Token.CLASS, yyline, yycolumn); }
+extends      				{ return new Token(Token.EXTENDS, yyline, yycolumn); }
+public      				{ return new Token(Token.PUBLIC, yyline, yycolumn); }
+static      				{ return new Token(Token.STATIC, yyline, yycolumn); }
+void      					{ return new Token(Token.VOID, yyline, yycolumn); }
+main      					{ return new Token(Token.MAIN, yyline, yycolumn); }
+String      				{ return new Token(Token.STRING, yyline, yycolumn); }
+return      				{ return new Token(Token.RETURN, yyline, yycolumn); }
+int      					{ return new Token(Token.INT, yyline, yycolumn); }
+if      					{ return new Token(Token.IF, yyline, yycolumn); }
+else						{ return new Token(Token.ELSE, yyline, yycolumn); }
+while						{ return new Token(Token.WHILE, yyline, yycolumn); }
+System.out.println			{ return new Token(Token.PRINTLN, yyline, yycolumn); }
+length						{ return new Token(Token.LENGTH, yyline, yycolumn); }
+true      					{ return new Token(Token.TRUE, yyline, yycolumn); }
+false						{ return new Token(Token.FALSE, yyline, yycolumn); }
+this						{ return new Token(Token.THIS, yyline, yycolumn); }
+new							{ return new Token(Token.NEW, yyline, yycolumn); }
 
 
 
