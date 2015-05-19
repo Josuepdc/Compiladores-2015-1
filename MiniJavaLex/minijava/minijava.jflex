@@ -131,8 +131,7 @@ new							{ return new Token(Token.NEW, yyline, yycolumn); }
 
 	
 // Identificadores e numerais
-[a-zA-Z]	   				{ return new Token(Token.ID, yytext(), yyline, yycolumn); }
-[a-zA-Z_][a-zA-Z0-9_]+		{ return new Token(Token.ID, yytext(), yyline, yycolumn); }
+[a-zA-Z][a-zA-Z0-9_]*		{ return new Token(Token.ID, yytext(), yyline, yycolumn); }
 [0-9]+						{ return new Token(Token.NUM, yytext(), yyline, yycolumn); }
 
 
