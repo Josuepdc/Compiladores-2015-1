@@ -1,4 +1,4 @@
-// Output created by jacc on Sun Jun 09 13:11:15 BRT 2013
+// Output created by jacc on Mon Jun 08 16:03:58 BRT 2015
 
 package minijava;
 
@@ -2577,8 +2577,8 @@ public class Parser implements Tokens {
             case ')':
             case NEQ:
             case ']':
-            case EQ:
             case '[':
+            case EQ:
             case '<':
             case ';':
             case '/':
@@ -2617,8 +2617,8 @@ public class Parser implements Tokens {
             case ')':
             case NEQ:
             case ']':
-            case EQ:
             case '[':
+            case EQ:
             case '<':
             case ';':
             case '/':
@@ -3011,7 +3011,7 @@ public class Parser implements Tokens {
             case PRINTLN:
             case ID:
             case ELSE:
-                return yyr25();
+                return yyr26();
         }
         return 307;
     }
@@ -3109,18 +3109,26 @@ public class Parser implements Tokens {
 
     private int yys64() {
         switch (yytok) {
-            case '+':
-            case '*':
-            case ')':
-            case NEQ:
-            case ']':
-            case EQ:
-            case '<':
-            case ';':
-            case '/':
-            case '-':
-            case ',':
             case AND:
+                return 49;
+            case EQ:
+                return 50;
+            case NEQ:
+                return 51;
+            case '*':
+                return 52;
+            case '+':
+                return 53;
+            case '-':
+                return 54;
+            case '/':
+                return 55;
+            case '<':
+                return 57;
+            case ')':
+            case ']':
+            case ';':
+            case ',':
                 return yyr36();
         }
         return 307;
@@ -3162,11 +3170,12 @@ public class Parser implements Tokens {
                 return 54;
             case '/':
                 return 55;
+            case '<':
+                return 57;
             case ')':
             case NEQ:
             case ']':
             case EQ:
-            case '<':
             case ';':
             case ',':
             case AND:
@@ -3185,11 +3194,12 @@ public class Parser implements Tokens {
                 return 54;
             case '/':
                 return 55;
+            case '<':
+                return 57;
             case ')':
             case NEQ:
             case ']':
             case EQ:
-            case '<':
             case ';':
             case ',':
             case AND:
@@ -3310,8 +3320,8 @@ public class Parser implements Tokens {
             case ')':
             case NEQ:
             case ']':
-            case EQ:
             case '[':
+            case EQ:
             case '<':
             case ';':
             case '/':
@@ -3398,8 +3408,8 @@ public class Parser implements Tokens {
             case ')':
             case NEQ:
             case ']':
-            case EQ:
             case '[':
+            case EQ:
             case '<':
             case ';':
             case '/':
@@ -3462,7 +3472,7 @@ public class Parser implements Tokens {
             case PRINTLN:
             case ID:
             case ELSE:
-                return yyr27();
+                return yyr25();
         }
         return 307;
     }
@@ -3534,8 +3544,8 @@ public class Parser implements Tokens {
             case ')':
             case NEQ:
             case ']':
-            case EQ:
             case '[':
+            case EQ:
             case '<':
             case ';':
             case '/':
@@ -3628,8 +3638,8 @@ public class Parser implements Tokens {
             case ')':
             case NEQ:
             case ']':
-            case EQ:
             case '[':
+            case EQ:
             case '<':
             case ';':
             case '/':
@@ -3671,7 +3681,7 @@ public class Parser implements Tokens {
             case PRINTLN:
             case ID:
             case ELSE:
-                return yyr26();
+                return yyr27();
         }
         return 307;
     }
@@ -3698,8 +3708,8 @@ public class Parser implements Tokens {
             case ')':
             case NEQ:
             case ']':
-            case EQ:
             case '[':
+            case EQ:
             case '<':
             case ';':
             case '/':
@@ -3984,44 +3994,44 @@ public class Parser implements Tokens {
     }
 
     private int yyr21() { // cmd : '{' cmds '}'
-        { yyrv = new Bloco(((java.util.List)yysv[yysp-2])); }
+        {yyrv = new Bloco(((java.util.List)yysv[yysp-2]));}
         yysv[yysp-=3] = yyrv;
         return yypcmd();
     }
 
     private int yyr22() { // cmd : IF '(' exp ')' cmd
-        { yyrv = new If(((Exp)yysv[yysp-3]), ((Cmd)yysv[yysp-1]), ((Token)yysv[yysp-5]).lin); }
+        {yyrv = new If( ((Exp)yysv[yysp-3]), ((Cmd)yysv[yysp-1]), ((Token)yysv[yysp-5]).lin);}
         yysv[yysp-=5] = yyrv;
         return yypcmd();
     }
 
     private int yyr23() { // cmd : IF '(' exp ')' cmd ELSE cmd
-        { yyrv = new If(((Exp)yysv[yysp-5]), ((Cmd)yysv[yysp-3]), ((Cmd)yysv[yysp-1]), ((Token)yysv[yysp-7]).lin); }
+        {yyrv = new If(((Exp)yysv[yysp-5]), ((Cmd)yysv[yysp-3]), ((Cmd)yysv[yysp-1]), ((Token)yysv[yysp-7]).lin);}
         yysv[yysp-=7] = yyrv;
         return yypcmd();
     }
 
     private int yyr24() { // cmd : WHILE '(' exp ')' cmd
-        { yyrv = new While(((Exp)yysv[yysp-3]), ((Cmd)yysv[yysp-1]), ((Token)yysv[yysp-5]).lin); }
+        {yyrv = new While( ((Exp)yysv[yysp-3]), ((Cmd)yysv[yysp-1]), ((Token)yysv[yysp-5]).lin );}
         yysv[yysp-=5] = yyrv;
         return yypcmd();
     }
 
-    private int yyr25() { // cmd : ID '=' exp ';'
-        { yyrv = new Atrib(((Token)yysv[yysp-4]).texto, ((Exp)yysv[yysp-2]), ((Token)yysv[yysp-3]).lin); }
+    private int yyr25() { // cmd : PRINTLN '(' exp ')' ';'
+        {yyrv = new Println( ((Exp)yysv[yysp-3]), ((Token)yysv[yysp-5]).lin );}
+        yysv[yysp-=5] = yyrv;
+        return yypcmd();
+    }
+
+    private int yyr26() { // cmd : ID '=' exp ';'
+        {yyrv = new Atrib( ((Token)yysv[yysp-4]).texto, ((Exp)yysv[yysp-2]), ((Token)yysv[yysp-3]).lin );}
         yysv[yysp-=4] = yyrv;
         return yypcmd();
     }
 
-    private int yyr26() { // cmd : ID '[' exp ']' '=' exp ';'
-        { yyrv = new AtribVetor(((Token)yysv[yysp-7]).texto, ((Exp)yysv[yysp-5]), ((Exp)yysv[yysp-2]), ((Token)yysv[yysp-3]).lin); }
+    private int yyr27() { // cmd : ID '[' exp ']' '=' exp ';'
+        {yyrv = new AtribVetor( ((Token)yysv[yysp-7]).texto, ((Exp)yysv[yysp-5]), ((Exp)yysv[yysp-2]), ((Token)yysv[yysp-3]).lin ); }
         yysv[yysp-=7] = yyrv;
-        return yypcmd();
-    }
-
-    private int yyr27() { // cmd : PRINTLN '(' exp ')' ';'
-        { yyrv = new Println(((Exp)yysv[yysp-3]), ((Token)yysv[yysp-5]).lin); }
-        yysv[yysp-=5] = yyrv;
         return yypcmd();
     }
 
@@ -4211,7 +4221,7 @@ public class Parser implements Tokens {
     }
 
     private int yyr9() { // metodos : metodos metodo
-        { ((java.util.List)yysv[yysp-2]).add(yysv[yysp-1]); yyrv = ((java.util.List)yysv[yysp-2]); }
+        { ((java.util.List)yysv[yysp-2]).add(yysv[yysp-1]); yyrv = ((java.util.List)yysv[yysp-2]);}
         yysv[yysp-=2] = yyrv;
         return yypmetodos();
     }
@@ -4285,13 +4295,13 @@ public class Parser implements Tokens {
     }
 
     private int yyr4() { // classe : CLASS ID '{' vars metodos '}'
-        { yyrv = new Classe(((Token)yysv[yysp-5]).texto, ((java.util.List)yysv[yysp-3]), ((java.util.List)yysv[yysp-2]), ((Token)yysv[yysp-5]).lin); }
+        { yyrv = new Classe(((Token)yysv[yysp-5]).texto, ((java.util.List)yysv[yysp-3]), ((java.util.List)yysv[yysp-2]), ((Token)yysv[yysp-6]).lin); }
         yysv[yysp-=6] = yyrv;
         return 69;
     }
 
     private int yyr5() { // classe : CLASS ID EXTENDS ID '{' vars metodos '}'
-        { yyrv = new Classe(((Token)yysv[yysp-7]).texto, ((Token)yysv[yysp-5]).texto, ((java.util.List)yysv[yysp-3]), ((java.util.List)yysv[yysp-2]), ((Token)yysv[yysp-7]).lin); }
+        { yyrv = new Classe(((Token)yysv[yysp-7]).texto, ((Token)yysv[yysp-5]).texto, ((java.util.List)yysv[yysp-3]), ((java.util.List)yysv[yysp-2]), ((Token)yysv[yysp-8]).lin); }
         yysv[yysp-=8] = yyrv;
         return 69;
     }

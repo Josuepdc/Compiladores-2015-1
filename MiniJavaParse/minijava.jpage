@@ -28,8 +28,7 @@ a menos de espaços em branco e comentários.
 Abaixo estão trechos de código que executam o analisador em
 alguns casos de teste:
 
-/* Primeiro modifique Parser.java para a classe Parser ser pública */
-java.io.FileReader f = new java.io.FileReader("factorial.java");
+/* Primeiro modifique Parser.java para a classe Parser ser pública */java.io.FileReader f = new java.io.FileReader("factorial.java");
 minijava.Parser parser = new minijava.Parser(f);
 parser.parse();
 String saida = parser.saida.toString();

@@ -1,29 +1,50 @@
-// Output created by jacc on Mon Jun 08 11:53:24 BRT 2015
+// Output created by jacc on Mon Jun 08 16:03:58 BRT 2015
+
+package minijava;
 
 interface Tokens {
     int ENDINPUT = 0;
-    int ATTRIB = 1;
-    int ELSE = 2;
-    int END = 3;
-    int ID = 4;
-    int IF = 5;
-    int NUM = 6;
-    int PROCEDURE = 7;
-    int READ = 8;
-    int REPEAT = 9;
-    int THEN = 10;
-    int UNTIL = 11;
-    int VAR = 12;
-    int WRITE = 13;
-    int error = 14;
+    int AND = 1;
+    int BOOLEAN = 2;
+    int CLASS = 3;
+    int ELSE = 4;
+    int EQ = 5;
+    int EXTENDS = 6;
+    int FALSE = 7;
+    int ID = 8;
+    int IF = 9;
+    int INT = 10;
+    int LENGTH = 11;
+    int MAIN = 12;
+    int NEG = 13;
+    int NEQ = 14;
+    int NEW = 15;
+    int NUM = 16;
+    int PRINTLN = 17;
+    int PUBLIC = 18;
+    int RETURN = 19;
+    int STATIC = 20;
+    int STRING = 21;
+    int THIS = 22;
+    int TRUE = 23;
+    int VOID = 24;
+    int WHILE = 25;
+    int error = 26;
+    // '!' (code=33)
     // '(' (code=40)
     // ')' (code=41)
     // '*' (code=42)
     // '+' (code=43)
     // ',' (code=44)
     // '-' (code=45)
+    // '.' (code=46)
     // '/' (code=47)
     // ';' (code=59)
     // '<' (code=60)
     // '=' (code=61)
+    // '>' (code=62)
+    // '[' (code=91)
+    // ']' (code=93)
+    // '{' (code=123)
+    // '}' (code=125)
 }
