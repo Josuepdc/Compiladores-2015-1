@@ -1,0 +1,759 @@
+// Output created by jacc on Mon Jun 08 11:53:24 BRT 2015
+
+state 0 (entry on s)
+    $accept : _s $end
+    var : _    (9)
+
+    PROCEDURE shift 6
+    VAR shift 7
+    WRITE reduce 9
+    IF reduce 9
+    REPEAT reduce 9
+    READ reduce 9
+    ID reduce 9
+    . error
+
+    s goto 1
+    cmds goto 2
+    proc goto 3
+    procs goto 4
+    var goto 5
+
+state 1 (entry on s)
+    $accept : s_$end
+
+    $end accept
+    . error
+
+state 2 (entry on cmds)
+    s : cmds_    (2)
+    cmds : cmds_';' cmd    (6)
+
+    ';' shift 8
+    $end reduce 2
+    . error
+
+state 3 (entry on proc)
+    procs : proc_    (4)
+
+    ';' reduce 4
+    . error
+
+state 4 (entry on procs)
+    s : procs_';' cmds    (1)
+    procs : procs_';' proc    (3)
+
+    ';' shift 9
+    . error
+
+state 5 (entry on var)
+    cmds : var_cmd    (7)
+
+    ID shift 11
+    IF shift 12
+    READ shift 13
+    REPEAT shift 14
+    WRITE shift 15
+    . error
+
+    cmd goto 10
+
+state 6 (entry on PROCEDURE)
+    proc : PROCEDURE_ID '(' ')' cmds END    (5)
+
+    ID shift 16
+    . error
+
+state 7 (entry on VAR)
+    var : VAR_ids ';'    (8)
+
+    ID shift 18
+    . error
+
+    ids goto 17
+
+state 8 (entry on ';')
+    cmds : cmds ';'_cmd    (6)
+
+    ID shift 11
+    IF shift 12
+    READ shift 13
+    REPEAT shift 14
+    WRITE shift 15
+    . error
+
+    cmd goto 19
+
+state 9 (entry on ';')
+    s : procs ';'_cmds    (1)
+    procs : procs ';'_proc    (3)
+    var : _    (9)
+
+    PROCEDURE shift 6
+    VAR shift 7
+    WRITE reduce 9
+    IF reduce 9
+    REPEAT reduce 9
+    READ reduce 9
+    ID reduce 9
+    . error
+
+    cmds goto 20
+    proc goto 21
+    var goto 5
+
+state 10 (entry on cmd)
+    cmds : var cmd_    (7)
+
+    $end reduce 7
+    END reduce 7
+    ';' reduce 7
+    UNTIL reduce 7
+    ELSE reduce 7
+    . error
+
+state 11 (entry on ID)
+    cmd : ID_ATTRIB exp    (15)
+    cmd : ID_'(' ')'    (18)
+
+    ATTRIB shift 22
+    '(' shift 23
+    . error
+
+state 12 (entry on IF)
+    cmd : IF_exp THEN cmds END    (12)
+    cmd : IF_exp THEN cmds ELSE cmds END    (13)
+
+    ID shift 25
+    NUM shift 26
+    '(' shift 27
+    . error
+
+    exp goto 24
+
+state 13 (entry on READ)
+    cmd : READ_ID    (17)
+
+    ID shift 28
+    . error
+
+state 14 (entry on REPEAT)
+    cmd : REPEAT_cmds UNTIL exp    (14)
+    var : _    (9)
+
+    VAR shift 7
+    WRITE reduce 9
+    IF reduce 9
+    REPEAT reduce 9
+    READ reduce 9
+    ID reduce 9
+    . error
+
+    cmds goto 29
+    var goto 5
+
+state 15 (entry on WRITE)
+    cmd : WRITE_exp    (16)
+
+    ID shift 25
+    NUM shift 26
+    '(' shift 27
+    . error
+
+    exp goto 30
+
+state 16 (entry on ID)
+    proc : PROCEDURE ID_'(' ')' cmds END    (5)
+
+    '(' shift 31
+    . error
+
+state 17 (entry on ids)
+    ids : ids_',' ID    (10)
+    var : VAR ids_';'    (8)
+
+    ',' shift 32
+    ';' shift 33
+    . error
+
+state 18 (entry on ID)
+    ids : ID_    (11)
+
+    ';' reduce 11
+    ',' reduce 11
+    . error
+
+state 19 (entry on cmd)
+    cmds : cmds ';' cmd_    (6)
+
+    $end reduce 6
+    END reduce 6
+    ';' reduce 6
+    UNTIL reduce 6
+    ELSE reduce 6
+    . error
+
+state 20 (entry on cmds)
+    s : procs ';' cmds_    (1)
+    cmds : cmds_';' cmd    (6)
+
+    ';' shift 8
+    $end reduce 1
+    . error
+
+state 21 (entry on proc)
+    procs : procs ';' proc_    (3)
+
+    ';' reduce 3
+    . error
+
+state 22 (entry on ATTRIB)
+    cmd : ID ATTRIB_exp    (15)
+
+    ID shift 25
+    NUM shift 26
+    '(' shift 27
+    . error
+
+    exp goto 34
+
+state 23 (entry on '(')
+    cmd : ID '('_')'    (18)
+
+    ')' shift 35
+    . error
+
+state 24 (entry on exp)
+    exp : exp_'<' exp    (19)
+    exp : exp_'=' exp    (20)
+    exp : exp_'+' exp    (21)
+    exp : exp_'*' exp    (22)
+    exp : exp_'-' exp    (23)
+    exp : exp_'/' exp    (24)
+    cmd : IF exp_THEN cmds END    (12)
+    cmd : IF exp_THEN cmds ELSE cmds END    (13)
+
+    THEN shift 36
+    '*' shift 37
+    '+' shift 38
+    '-' shift 39
+    '/' shift 40
+    '<' shift 41
+    '=' shift 42
+    . error
+
+state 25 (entry on ID)
+    exp : ID_    (27)
+
+    ID error
+    error error
+    VAR error
+    REPEAT error
+    '(' error
+    PROCEDURE error
+    ATTRIB error
+    NUM error
+    IF error
+    ',' error
+    READ error
+    WRITE error
+    . reduce 27
+
+state 26 (entry on NUM)
+    exp : NUM_    (26)
+
+    ID error
+    error error
+    VAR error
+    REPEAT error
+    '(' error
+    PROCEDURE error
+    ATTRIB error
+    NUM error
+    IF error
+    ',' error
+    READ error
+    WRITE error
+    . reduce 26
+
+state 27 (entry on '(')
+    exp : '('_exp ')'    (25)
+
+    ID shift 25
+    NUM shift 26
+    '(' shift 27
+    . error
+
+    exp goto 43
+
+state 28 (entry on ID)
+    cmd : READ ID_    (17)
+
+    $end reduce 17
+    END reduce 17
+    ';' reduce 17
+    UNTIL reduce 17
+    ELSE reduce 17
+    . error
+
+state 29 (entry on cmds)
+    cmds : cmds_';' cmd    (6)
+    cmd : REPEAT cmds_UNTIL exp    (14)
+
+    ';' shift 8
+    UNTIL shift 44
+    . error
+
+state 30 (entry on exp)
+    exp : exp_'<' exp    (19)
+    exp : exp_'=' exp    (20)
+    exp : exp_'+' exp    (21)
+    exp : exp_'*' exp    (22)
+    exp : exp_'-' exp    (23)
+    exp : exp_'/' exp    (24)
+    cmd : WRITE exp_    (16)
+
+    '*' shift 37
+    '+' shift 38
+    '-' shift 39
+    '/' shift 40
+    '<' shift 41
+    '=' shift 42
+    $end reduce 16
+    END reduce 16
+    ';' reduce 16
+    UNTIL reduce 16
+    ELSE reduce 16
+    . error
+
+state 31 (entry on '(')
+    proc : PROCEDURE ID '('_')' cmds END    (5)
+
+    ')' shift 45
+    . error
+
+state 32 (entry on ',')
+    ids : ids ','_ID    (10)
+
+    ID shift 46
+    . error
+
+state 33 (entry on ';')
+    var : VAR ids ';'_    (8)
+
+    WRITE reduce 8
+    IF reduce 8
+    REPEAT reduce 8
+    READ reduce 8
+    ID reduce 8
+    . error
+
+state 34 (entry on exp)
+    exp : exp_'<' exp    (19)
+    exp : exp_'=' exp    (20)
+    exp : exp_'+' exp    (21)
+    exp : exp_'*' exp    (22)
+    exp : exp_'-' exp    (23)
+    exp : exp_'/' exp    (24)
+    cmd : ID ATTRIB exp_    (15)
+
+    '*' shift 37
+    '+' shift 38
+    '-' shift 39
+    '/' shift 40
+    '<' shift 41
+    '=' shift 42
+    $end reduce 15
+    END reduce 15
+    ';' reduce 15
+    UNTIL reduce 15
+    ELSE reduce 15
+    . error
+
+state 35 (entry on ')')
+    cmd : ID '(' ')'_    (18)
+
+    $end reduce 18
+    END reduce 18
+    ';' reduce 18
+    UNTIL reduce 18
+    ELSE reduce 18
+    . error
+
+state 36 (entry on THEN)
+    cmd : IF exp THEN_cmds END    (12)
+    cmd : IF exp THEN_cmds ELSE cmds END    (13)
+    var : _    (9)
+
+    VAR shift 7
+    WRITE reduce 9
+    IF reduce 9
+    REPEAT reduce 9
+    READ reduce 9
+    ID reduce 9
+    . error
+
+    cmds goto 47
+    var goto 5
+
+state 37 (entry on '*')
+    exp : exp '*'_exp    (22)
+
+    ID shift 25
+    NUM shift 26
+    '(' shift 27
+    . error
+
+    exp goto 48
+
+state 38 (entry on '+')
+    exp : exp '+'_exp    (21)
+
+    ID shift 25
+    NUM shift 26
+    '(' shift 27
+    . error
+
+    exp goto 49
+
+state 39 (entry on '-')
+    exp : exp '-'_exp    (23)
+
+    ID shift 25
+    NUM shift 26
+    '(' shift 27
+    . error
+
+    exp goto 50
+
+state 40 (entry on '/')
+    exp : exp '/'_exp    (24)
+
+    ID shift 25
+    NUM shift 26
+    '(' shift 27
+    . error
+
+    exp goto 51
+
+state 41 (entry on '<')
+    exp : exp '<'_exp    (19)
+
+    ID shift 25
+    NUM shift 26
+    '(' shift 27
+    . error
+
+    exp goto 52
+
+state 42 (entry on '=')
+    exp : exp '='_exp    (20)
+
+    ID shift 25
+    NUM shift 26
+    '(' shift 27
+    . error
+
+    exp goto 53
+
+state 43 (entry on exp)
+    exp : exp_'<' exp    (19)
+    exp : exp_'=' exp    (20)
+    exp : exp_'+' exp    (21)
+    exp : exp_'*' exp    (22)
+    exp : exp_'-' exp    (23)
+    exp : exp_'/' exp    (24)
+    exp : '(' exp_')'    (25)
+
+    '*' shift 37
+    '+' shift 38
+    '-' shift 39
+    '/' shift 40
+    '<' shift 41
+    '=' shift 42
+    ')' shift 54
+    . error
+
+state 44 (entry on UNTIL)
+    cmd : REPEAT cmds UNTIL_exp    (14)
+
+    ID shift 25
+    NUM shift 26
+    '(' shift 27
+    . error
+
+    exp goto 55
+
+state 45 (entry on ')')
+    proc : PROCEDURE ID '(' ')'_cmds END    (5)
+    var : _    (9)
+
+    VAR shift 7
+    WRITE reduce 9
+    IF reduce 9
+    REPEAT reduce 9
+    READ reduce 9
+    ID reduce 9
+    . error
+
+    cmds goto 56
+    var goto 5
+
+state 46 (entry on ID)
+    ids : ids ',' ID_    (10)
+
+    ';' reduce 10
+    ',' reduce 10
+    . error
+
+state 47 (entry on cmds)
+    cmds : cmds_';' cmd    (6)
+    cmd : IF exp THEN cmds_END    (12)
+    cmd : IF exp THEN cmds_ELSE cmds END    (13)
+
+    ';' shift 8
+    ELSE shift 57
+    END shift 58
+    . error
+
+state 48 (entry on exp)
+    exp : exp_'<' exp    (19)
+    exp : exp_'=' exp    (20)
+    exp : exp_'+' exp    (21)
+    exp : exp_'*' exp    (22)
+    exp : exp '*' exp_    (22)
+    exp : exp_'-' exp    (23)
+    exp : exp_'/' exp    (24)
+
+    ID error
+    error error
+    VAR error
+    REPEAT error
+    '(' error
+    PROCEDURE error
+    ATTRIB error
+    NUM error
+    IF error
+    ',' error
+    READ error
+    WRITE error
+    . reduce 22
+
+state 49 (entry on exp)
+    exp : exp_'<' exp    (19)
+    exp : exp_'=' exp    (20)
+    exp : exp_'+' exp    (21)
+    exp : exp '+' exp_    (21)
+    exp : exp_'*' exp    (22)
+    exp : exp_'-' exp    (23)
+    exp : exp_'/' exp    (24)
+
+    '*' shift 37
+    '/' shift 40
+    $end reduce 21
+    '=' reduce 21
+    END reduce 21
+    UNTIL reduce 21
+    '-' reduce 21
+    THEN reduce 21
+    ';' reduce 21
+    '<' reduce 21
+    '+' reduce 21
+    ')' reduce 21
+    ELSE reduce 21
+    . error
+
+state 50 (entry on exp)
+    exp : exp_'<' exp    (19)
+    exp : exp_'=' exp    (20)
+    exp : exp_'+' exp    (21)
+    exp : exp_'*' exp    (22)
+    exp : exp_'-' exp    (23)
+    exp : exp '-' exp_    (23)
+    exp : exp_'/' exp    (24)
+
+    '*' shift 37
+    '/' shift 40
+    $end reduce 23
+    '=' reduce 23
+    END reduce 23
+    UNTIL reduce 23
+    '-' reduce 23
+    THEN reduce 23
+    ';' reduce 23
+    '<' reduce 23
+    '+' reduce 23
+    ')' reduce 23
+    ELSE reduce 23
+    . error
+
+state 51 (entry on exp)
+    exp : exp_'<' exp    (19)
+    exp : exp_'=' exp    (20)
+    exp : exp_'+' exp    (21)
+    exp : exp_'*' exp    (22)
+    exp : exp_'-' exp    (23)
+    exp : exp_'/' exp    (24)
+    exp : exp '/' exp_    (24)
+
+    ID error
+    error error
+    VAR error
+    REPEAT error
+    '(' error
+    PROCEDURE error
+    ATTRIB error
+    NUM error
+    IF error
+    ',' error
+    READ error
+    WRITE error
+    . reduce 24
+
+state 52 (entry on exp)
+    exp : exp_'<' exp    (19)
+    exp : exp '<' exp_    (19)
+    exp : exp_'=' exp    (20)
+    exp : exp_'+' exp    (21)
+    exp : exp_'*' exp    (22)
+    exp : exp_'-' exp    (23)
+    exp : exp_'/' exp    (24)
+
+    '*' shift 37
+    '+' shift 38
+    '-' shift 39
+    '/' shift 40
+    $end reduce 19
+    '=' reduce 19
+    END reduce 19
+    '<' reduce 19
+    ';' reduce 19
+    UNTIL reduce 19
+    THEN reduce 19
+    ')' reduce 19
+    ELSE reduce 19
+    . error
+
+state 53 (entry on exp)
+    exp : exp_'<' exp    (19)
+    exp : exp_'=' exp    (20)
+    exp : exp '=' exp_    (20)
+    exp : exp_'+' exp    (21)
+    exp : exp_'*' exp    (22)
+    exp : exp_'-' exp    (23)
+    exp : exp_'/' exp    (24)
+
+    '*' shift 37
+    '+' shift 38
+    '-' shift 39
+    '/' shift 40
+    '<' shift 41
+    $end reduce 20
+    '=' reduce 20
+    END reduce 20
+    ';' reduce 20
+    UNTIL reduce 20
+    THEN reduce 20
+    ')' reduce 20
+    ELSE reduce 20
+    . error
+
+state 54 (entry on ')')
+    exp : '(' exp ')'_    (25)
+
+    ID error
+    error error
+    VAR error
+    REPEAT error
+    '(' error
+    PROCEDURE error
+    ATTRIB error
+    NUM error
+    IF error
+    ',' error
+    READ error
+    WRITE error
+    . reduce 25
+
+state 55 (entry on exp)
+    exp : exp_'<' exp    (19)
+    exp : exp_'=' exp    (20)
+    exp : exp_'+' exp    (21)
+    exp : exp_'*' exp    (22)
+    exp : exp_'-' exp    (23)
+    exp : exp_'/' exp    (24)
+    cmd : REPEAT cmds UNTIL exp_    (14)
+
+    '*' shift 37
+    '+' shift 38
+    '-' shift 39
+    '/' shift 40
+    '<' shift 41
+    '=' shift 42
+    $end reduce 14
+    END reduce 14
+    ';' reduce 14
+    UNTIL reduce 14
+    ELSE reduce 14
+    . error
+
+state 56 (entry on cmds)
+    cmds : cmds_';' cmd    (6)
+    proc : PROCEDURE ID '(' ')' cmds_END    (5)
+
+    ';' shift 8
+    END shift 59
+    . error
+
+state 57 (entry on ELSE)
+    cmd : IF exp THEN cmds ELSE_cmds END    (13)
+    var : _    (9)
+
+    VAR shift 7
+    WRITE reduce 9
+    IF reduce 9
+    REPEAT reduce 9
+    READ reduce 9
+    ID reduce 9
+    . error
+
+    cmds goto 60
+    var goto 5
+
+state 58 (entry on END)
+    cmd : IF exp THEN cmds END_    (12)
+
+    $end reduce 12
+    END reduce 12
+    ';' reduce 12
+    UNTIL reduce 12
+    ELSE reduce 12
+    . error
+
+state 59 (entry on END)
+    proc : PROCEDURE ID '(' ')' cmds END_    (5)
+
+    ';' reduce 5
+    . error
+
+state 60 (entry on cmds)
+    cmds : cmds_';' cmd    (6)
+    cmd : IF exp THEN cmds ELSE cmds_END    (13)
+
+    ';' shift 8
+    END shift 61
+    . error
+
+state 61 (entry on END)
+    cmd : IF exp THEN cmds ELSE cmds END_    (13)
+
+    $end reduce 13
+    END reduce 13
+    ';' reduce 13
+    UNTIL reduce 13
+    ELSE reduce 13
+    . error
+
+25 terminals, 8 nonterminals;
+27 grammar rules, 62 states;
+0 shift/reduce and 0 reduce/reduce conflicts reported.
