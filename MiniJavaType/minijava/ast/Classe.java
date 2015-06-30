@@ -50,6 +50,10 @@ public class Classe {
 		// Uma classe é subclasse dela mesma
 		// classe A é subclasse de B se B é pai de A
 		// classe A é subclasse de B se pai de A é subclasse de B
+		if(this == classes.procurar(classe))
+			return
+					
+					
 		return false;
 	}
 	
