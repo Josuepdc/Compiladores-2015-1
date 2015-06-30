@@ -2,6 +2,8 @@ package minijava.ast;
 
 import java.util.List;
 
+import javax.management.RuntimeErrorException;
+
 import minijava.TabSimb;
 
 public class Classe {
@@ -50,10 +52,11 @@ public class Classe {
 		// Uma classe é subclasse dela mesma
 		// classe A é subclasse de B se B é pai de A
 		// classe A é subclasse de B se pai de A é subclasse de B
-		if(this == classes.procurar(classe))
-			return
-					
-					
+		if(classes.procurar(classe)!= null){
+			for(Classe aux = this; aux.nome != "Object"; aux = classes.procurar(aux.pai))
+				if(aux == classes.procurar(classe))
+					return true;				
+		}	
 		return false;
 	}
 	
@@ -65,6 +68,13 @@ public class Classe {
 		// declare um campo com o mesmo nome de um campo de uma de suas
 		// superclasses, o erro deve ser acusado na linha que está
 		// redeclarando o campo na subclasse
+			
+		for(Classe aux = this; aux.nome != "Object"; aux = classes.procurar(aux.pai))
+			for(Var v : aux.campos)
+				if(!vars.inserir(v.tipo, v.nome))
+					for(Var v2 : this.campos)
+						if(v2.nome == v.nome )
+							throw new RuntimeException("erro na linha" + v2.lin);
 	}
 	
 	public void adicionaCampos(TabSimb<Classe> classes) {

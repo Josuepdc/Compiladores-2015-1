@@ -36,8 +36,22 @@ public class Chamada implements Exp {
 		//   verificar se existe uma classe declarada com esse tipo
 		//   verificar se a classe tem um método chamado "nome"
 		//   verificar se o número de argumentos bate com o número de parâmetros
-		//   verificar se o tipo de cada argumento é compatível com o tipo do parâmetro correspondente
+		//  N verificar se o tipo de cada argumento é compatível com o tipo do parâmetro correspondente
 		// Se todas as verificações acima passam, o tipo da chamada é o tipo de retorno do método
+		
+		Metodo metodo = self.todosMetodos.procurar(nome);
+		if(metodo != null){
+			Classe classe = classes.procurar(metodo.tret);
+			if(classe !=null){
+				for(Metodo m: classe.metodos){
+					if(m.nome == this.nome)
+						if(this.args.size() == m.params.size())
+							//TODO N
+								
+								
+				}
+			}
+		}
 		return null;
 	}
 }
