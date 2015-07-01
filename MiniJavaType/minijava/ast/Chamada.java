@@ -38,23 +38,23 @@ public class Chamada implements Exp {
 		//   verificar se o número de argumentos bate com o número de parâmetros
 		//   verificar se o tipo de cada argumento é compatível com o tipo do parâmetro correspondente
 		// Se todas as verificações acima passam, o tipo da chamada é o tipo de retorno do método
-		
+
 		Classe classe = classes.procurar(obj.tipo(self, classes, vars));
 		
-		if(classe != null){
-			for(Metodo m: classe.metodos){
-				if(m.nome == this.nome)
+		if(classe != null) {
+			for(Metodo m: classe.metodos) {
+				if(m.nome.equals(this.nome)) {
 					if(m.params.size() == this.args.size()) {
-						for(int i = 0 ; i < this.args.size() ; i++) {
-							if(m.params.get(i).tipo == this.args.get(i).tipo(self, classes, vars))
-								return m.tret;
-							else
-								throw new RuntimeException("tipo do " + i + "º argumento não bate com o tipo do parâmetro na linha" + this.lin);
+						for(int i = 0 ; i < this.args.size() ; i++){
+							//if(!m.params.get(i).tipo.equals(this.args.get(i).tipo(self, classes, vars)) || classes.procurar(m.params.get(i).tipo).subClasseDe(classes, this.args.get(i).tipo(self, classes, vars)) )
+							Tipo.compativel(classes, this.args.get(i).tipo(self, classes, vars), m.params.get(i).tipo, this.lin);
+
 						}
+						return m.tret;
 					} else {
 						throw new RuntimeException("numero de argumentos não corresponde ao numero de parâmentros na linha" + this.lin);
 					}
-				
+				}
 							
 							
 			}

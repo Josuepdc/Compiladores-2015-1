@@ -49,11 +49,20 @@ public class Classe {
 		// Ele retorna verdadeiro se a classe corrente Ã© subclasse de "classe"
 		// Uma classe Ã© subclasse dela mesma
 		// classe A Ã© subclasse de B se B Ã© pai de A
-		// classe A Ã© subclasse de B se pai de A Ã© subclasse de B
+		// classe A Ã© subclasse de B se pai de A Ã© subclasse de B		
+		
+		
 		if(classes.procurar(classe)!= null){
-			for(Classe aux = this; aux.nome != "Object"; aux = classes.procurar(aux.pai))
-				if(aux == classes.procurar(classe))
-					return true;				
+			if(this == classes.procurar(classe))
+				return true;
+			
+			if(classes.procurar(this.pai) == classes.procurar(classe))
+				return true;
+			
+			for(Classe aux = this ; !aux.pai.equals("Object") ; aux = classes.procurar(aux.pai)) {
+				if(classes.procurar(aux.pai) == classes.procurar(classe))
+					return true;			
+			}
 		}	
 		return false;
 	}
@@ -67,12 +76,16 @@ public class Classe {
 		// superclasses, o erro deve ser acusado na linha que estÃ¡
 		// redeclarando o campo na subclasse
 			
-		for(Classe aux = this ; aux.pai != "Object" ; aux = classes.procurar(aux.pai))
-			for(Var v : aux.campos)
-				if(!vars.inserir(v.nome, v.tipo))
-					for(Var v_atual : this.campos)
-						if(v_atual.nome == v.nome )
-							throw new RuntimeException("campo " + v_atual.nome + " redeclarado na linha" + v_atual.lin);
+		for(Var v : this.campos)
+			vars.inserir(v.nome, v.tipo);
+		
+		if(this.pai != "Object")
+			for(Classe aux = this ; !aux.pai.equals("Object") ; aux = classes.procurar(aux.pai))
+				for(Var v : classes.procurar(aux.pai).campos)
+					if(!vars.inserir(v.nome, v.tipo))
+						for(Var v_atual : this.campos)
+							if(v_atual.nome.equals(v.nome) )
+								throw new RuntimeException("campo " + v_atual.nome + " redeclarado na linha" + v_atual.lin);
 	}
 	
 	public void adicionaCampos(TabSimb<Classe> classes) {
