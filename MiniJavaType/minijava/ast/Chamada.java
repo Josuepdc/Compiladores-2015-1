@@ -39,27 +39,24 @@ public class Chamada implements Exp {
 		//   verificar se o tipo de cada argumento é compatível com o tipo do parâmetro correspondente
 		// Se todas as verificações acima passam, o tipo da chamada é o tipo de retorno do método
 		
-		Metodo metodo = self.todosMetodos.procurar(nome);
+		Classe classe = classes.procurar(obj.tipo(self, classes, vars));
 		
-		if(metodo != null){
-			Classe classe = classes.procurar(metodo.tret);
-			if(classe !=null){
-				for(Metodo m: classe.metodos){
-					if(m.nome == this.nome)
-						if(m.params.size() == this.args.size()) {
-							for(int i = 0 ; i < this.args.size() ; i++) {
-								if(m.params.get(i).tipo == this.args.get(i).tipo(self, classes, vars))
-									return m.tret;
-								else
-									throw new RuntimeException("tipo do " + i + "º argumento não bate com o tipo do parâmetro na linha" + this.lin);
-							}
-						} else {
-							throw new RuntimeException("numero de argumentos não corresponde ao numero de parâmentros na linha" + this.lin);
+		if(classe != null){
+			for(Metodo m: classe.metodos){
+				if(m.nome == this.nome)
+					if(m.params.size() == this.args.size()) {
+						for(int i = 0 ; i < this.args.size() ; i++) {
+							if(m.params.get(i).tipo == this.args.get(i).tipo(self, classes, vars))
+								return m.tret;
+							else
+								throw new RuntimeException("tipo do " + i + "º argumento não bate com o tipo do parâmetro na linha" + this.lin);
 						}
-					
-								
-								
-				}
+					} else {
+						throw new RuntimeException("numero de argumentos não corresponde ao numero de parâmentros na linha" + this.lin);
+					}
+				
+							
+							
 			}
 		}
 		

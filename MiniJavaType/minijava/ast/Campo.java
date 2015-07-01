@@ -27,7 +27,7 @@ public class Campo implements Exp {
 		//   verificar se a classe tem um campo chamado "nome"
 		// Se todas as verificaÃ§Ãµes acima passam, o tipo do acesso Ã© o tipo do campo
 		
-		String tipo = vars.procurar(nome);
+		String tipo = obj.tipo(self, classes, vars);
 		
 		if(tipo != null) {
 			Classe classe = classes.procurar(tipo);

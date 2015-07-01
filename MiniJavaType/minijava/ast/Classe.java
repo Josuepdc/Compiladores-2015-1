@@ -67,7 +67,7 @@ public class Classe {
 		// superclasses, o erro deve ser acusado na linha que estÃ¡
 		// redeclarando o campo na subclasse
 			
-		for(Classe aux = this; aux.nome != "Object"; aux = classes.procurar(aux.pai))
+		for(Classe aux = this ; aux.pai != "Object" ; aux = classes.procurar(aux.pai))
 			for(Var v : aux.campos)
 				if(!vars.inserir(v.nome, v.tipo))
 					for(Var v_atual : this.campos)
