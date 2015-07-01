@@ -24,6 +24,11 @@ public class Indexa implements Exp {
 		// o tipo de uma indexação é sempre "int", mas antes precisamos:
 		//   verificar que o tipo de "tvet" é compatível com "int[]"
 		//   verificar que o tipo de "tind" é compatível com "int"
+		
+		
+		if(vet.tipo(self, classes, vars) == "int[]" && ind.tipo(self, classes, vars) == "int")
+			return "int";
+		
 		return null;
 	}
 

@@ -20,22 +20,25 @@ public class Campo implements Exp {
 	@Override
 	public String tipo(Classe self, TabSimb<Classe> classes,
 			TabSimb<String> vars) {
-		// TODO: implemente esse método
+		// TODO: implemente esse mÃ©todo
 		// Para saber o tipo de um acesso a campo:
-		//   obter o tipo da expressão "obj"
+		//   obter o tipo da expressÃ£o "obj"
 		//   verificar se existe uma classe declarada com esse tipo
 		//   verificar se a classe tem um campo chamado "nome"
-		// Se todas as verificações acima passam, o tipo do acesso é o tipo do campo
-		String tipo = self.todosCampos.procurar(nome);
-		if(tipo != null){
+		// Se todas as verificaÃ§Ãµes acima passam, o tipo do acesso Ã© o tipo do campo
+		
+		String tipo = vars.procurar(nome);
+		
+		if(tipo != null) {
 			Classe classe = classes.procurar(tipo);
-			if(classe !=null){
-				for(Var v: classe.campos){
-					if(v.nome != null)
+			if(classe != null) {
+				for(Var v: classe.campos) {
+					if(v.nome != this.nome)
 						return v.tipo;
 				}
 			}
 		}
+		
 		return null;
 	}
 }
